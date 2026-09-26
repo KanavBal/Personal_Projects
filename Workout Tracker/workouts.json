@@ -1,0 +1,42 @@
+[
+    {
+        "Date": "22-3-26",
+        "Log": [
+            {
+                "Name": "Bench Press",
+                "Weight": "65",
+                "Reps": "12"
+            },
+            {
+                "Name": "Squats",
+                "Weight": "80",
+                "Reps": "7"
+            }
+        ]
+    },
+    {
+        "Date": "22-22-22",
+        "Log": [
+            {
+                "Name": "Calf Raises",
+                "Weight": "70",
+                "Reps": "12"
+            },
+            {
+                "Name": "Lateral Raises",
+                "Weight": "15",
+                "Reps": "12"
+            }
+        ]
+    },
+    {
+        "Date": "22-22-2222",
+        "Log": [
+            {
+                "Name": "Bench Press",
+                "Weight": "67",
+                "Reps": "12"
+            }
+        ]
+    }
+]

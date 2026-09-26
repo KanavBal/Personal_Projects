@@ -2,6 +2,15 @@
 import csv # Handling CSV files
 import json # Handling JSON files
 import re # Regular Expressions
+from pathlib import Path
+
+# Makes sure that extra files are read from same folder as main
+BASE_DIR = Path(__file__).parent
+
+EXERCISES_FILE = BASE_DIR / "exersises.csv"
+WORKOUTS_FILE = BASE_DIR / "workouts.json"
+
+
 
 class Exersise:
     def __init__(self, name, personalBest):
@@ -85,7 +94,7 @@ def main():
 
             case 3:
                 # Load JSON file containing workout logs
-                with open("workouts.json", "r") as file:
+                with open(WORKOUTS_FILE, "r") as file:
                     workouts = json.load(file)
 
                 # Print list of all workouts
@@ -117,7 +126,7 @@ def create_exersise():
 
 def load_exersises():
     exersises = []
-    with open("exersises.csv", "r") as file:
+    with open(EXERCISES_FILE, "r") as file:
         reader = csv.DictReader(file)
         for line in reader:
             exersises.append(line["Name"])
@@ -125,7 +134,7 @@ def load_exersises():
 
 def get_exersise_number(target_number):
     # Use the number of the exersise to get its name for the log
-    with open("exersises.csv", "r") as file:
+    with open(EXERCISES_FILE, "r") as file:
         reader = csv.DictReader(file)
         for number, line in enumerate(reader, start = 1):
             if number == int(target_number):
@@ -134,7 +143,7 @@ def get_exersise_number(target_number):
 
 def get_exerise_personalBest(target_number):
     # Use the number of the exersise to get its PR
-        with open("exersises.csv", "r") as file:
+        with open(EXERCISES_FILE, "r") as file:
             reader = csv.DictReader(file)
             for number, line in enumerate(reader, start = 1):
                 if number == int(target_number):
@@ -144,7 +153,7 @@ def get_exerise_personalBest(target_number):
 def updatepb(name, new_pr):
     exercises = []
 
-    with open("exersises.csv", "r") as file:
+    with open(EXERCISES_FILE, "r") as file:
         reader = csv.DictReader(file)
 
         for line in reader:
@@ -153,7 +162,7 @@ def updatepb(name, new_pr):
 
             exercises.append(line)
 
-    with open("exersises.csv", "w", newline="") as file:
+    with open(EXERCISES_FILE, "w", newline="") as file:
         writer = csv.DictWriter(
             file,
             fieldnames=["Name", "Personal Best"]
@@ -165,7 +174,7 @@ def updatepb(name, new_pr):
 def add_exersise(name, personalBest):
     alreadyExersise = False
     # Checking if exerisise is already in the list
-    with open("exersises.csv", "r") as file:
+    with open(EXERCISES_FILE, "r") as file:
         reader = csv.DictReader(file)
         for number, line in enumerate(reader, start = 1):
             if name == line["Name"]:
@@ -174,7 +183,7 @@ def add_exersise(name, personalBest):
         if alreadyExersise == False:
             print(f"{name} has now been added as a new exersise!")
 
-            with open("exersises.csv", "a") as file:
+            with open(EXERCISES_FILE, "a") as file:
                 writer = csv.DictWriter(file, fieldnames=["Name", "Personal Best"])
                 writer.writerow({"Name": name, "Personal Best": personalBest})
         else:
@@ -201,19 +210,19 @@ def get_workout():
 
 def save_json(log):
     try:
-        with open("workouts.json", "r") as file:
+        with open(WORKOUTS_FILE, "r") as file:
             workouts = json.load(file)
     except FileNotFoundError:
         workouts = []
     
     workouts.append(log)
     
-    with open("workouts.json", "w") as file:
+    with open(WORKOUTS_FILE, "w") as file:
         json.dump(workouts, file, indent=4)
 
 def print_exersise():
     print(f"Here are the loaded exersises: ")
-    with open("exersises.csv", "r") as file:
+    with open(EXERCISES_FILE, "r") as file:
         reader = csv.DictReader(file)
         for number, line in enumerate(reader, start = 1):
             print(f"{number} {line["Name"]}")
