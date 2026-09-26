@@ -1,7 +1,7 @@
 import csv # Handling CSV files
 import json # Handling JSON files
 import re # Regular Expressions
-
+import os # Operating system library
 
 
 class Exersise:
@@ -221,6 +221,9 @@ def print_exersise():
 
 #def clear_terminal():
     #os.system("cls" if os.name == "nt" else "clear")
+
+def clear_termilal():
+    os.system("cls" if os.name == "nt" else "clear")
 
 if __name__ == "__main__": # Only runs main function if the file is the primary code file. 
     main()
