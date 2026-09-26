@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-# This file is with os imported
-=======
 # This file is without os imported
->>>>>>> development
 import csv # Handling CSV files
 import json # Handling JSON files
 import re # Regular Expressions
-
 
 class Exersise:
     def __init__(self, name, personalBest):
@@ -222,13 +217,6 @@ def print_exersise():
         reader = csv.DictReader(file)
         for number, line in enumerate(reader, start = 1):
             print(f"{number} {line["Name"]}")
-
-<<<<<<< HEAD
-def clear_termilal():
-    os.system("cls" if os.name == "nt" else "clear")
-=======
-
->>>>>>> staging
 
 if __name__ == "__main__": # Only runs main function if the file is the primary code file. 
     main()
