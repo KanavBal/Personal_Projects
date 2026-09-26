@@ -220,9 +220,6 @@ def print_exersise():
         for number, line in enumerate(reader, start = 1):
             print(f"{number} {line["Name"]}")
 
-#def clear_terminal():
-    #os.system("cls" if os.name == "nt" else "clear")
-
 def clear_termilal():
     os.system("cls" if os.name == "nt" else "clear")
 
