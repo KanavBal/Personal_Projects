@@ -1,6 +1,0 @@
-print("Let's see if this works")
-print("I am now making another change, lets see if it works")
-print("Hello World")
-print("Hello Github")
-print("Hello My Dear Macbook Pro")
-print("Let's see if the mac can fetch this")
