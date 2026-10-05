@@ -3,7 +3,17 @@ import requests
 
 def main():
     city_cords = get_cords(input("Enter City: "))
-    print(city_cords)
+    weather_info = get_weather(city_cords[0], city_cords[1])
+
+    temperature = weather_info["Temp"]
+    humidity = weather_info["humid"]
+    wind_speed = weather_info["wind"]
+
+    print(f"{temperature} C")
+    print(f"{humidity}")
+    print(f"{wind_speed} m/s")
+
+
 
 def get_cords(city):
 
@@ -14,12 +24,39 @@ def get_cords(city):
         "format": "json"
     }
 
-    response = requests.get("https://geocoding-api.open-meteo.com/v1/search", params=parameters)
+    cords_url = "https://geocoding-api.open-meteo.com/v1/search"
+    response = requests.get(cords_url, params=parameters)
     data = response.json()
 
     latitude = data["results"][0]["latitude"]
     longitude = data["results"][0]["longitude"]
     return latitude, longitude
+
+def get_weather(latitude, longitude):
+    parameters = {
+        "latitude": latitude,
+        "longitude": longitude,
+        "current": [
+            "temperature_2m",
+            "relative_humidity_2m",
+            "apparent_temperature",
+            "precipitation",
+            "weather_code",
+            "wind_speed_10m"
+        ]
+    }
+    weather_url = "https://api.open-meteo.com/v1/forecast"
+    response = requests.get(weather_url, params=parameters)
+    data = response.json()
+
+    temp = data["current"]["temperature_2m"]
+    humidity = data["current"]["relative_humidity_2m"]
+    wind_speed = data["current"]["wind_speed_10m"]
+
+    return {"Temp": temp, "humid": humidity, "wind": wind_speed}
+
+
+
 
 if __name__ == "__main__": # Only runs main function if the file is the primary code file. 
     main()
