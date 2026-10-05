@@ -2,17 +2,16 @@ import requests
 
 
 def main():
-    city_cords = get_cords(input("Enter City: "))
+    city_cords = get_cords(welcome())
     weather_info = get_weather(city_cords[0], city_cords[1])
+    display_weather(weather_info)
+    
 
-    temperature = weather_info["Temp"]
-    humidity = weather_info["humid"]
-    wind_speed = weather_info["wind"]
 
-    print(f"{temperature} C")
-    print(f"{humidity}")
-    print(f"{wind_speed} m/s")
 
+def welcome():
+    print(f"Welcome To This Weather App")
+    return input(f"Please enter a city: ")
 
 
 def get_cords(city):
@@ -56,6 +55,14 @@ def get_weather(latitude, longitude):
     return {"Temp": temp, "humid": humidity, "wind": wind_speed}
 
 
+def display_weather(weather_info):
+        temperature = weather_info["Temp"]
+        humidity = weather_info["humid"]
+        wind_speed = weather_info["wind"]
+    
+        print(f"{temperature} C")
+        print(f"{humidity} %")
+        print(f"{wind_speed} m/s")
 
 
 if __name__ == "__main__": # Only runs main function if the file is the primary code file. 
