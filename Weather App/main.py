@@ -2,10 +2,8 @@ import requests
 
 
 def main():
-
-    print(get_cords(input("Enter City: ")))
-
-
+    city_cords = get_cords(input("Enter City: "))
+    print(city_cords)
 
 def get_cords(city):
 
