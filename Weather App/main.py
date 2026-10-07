@@ -24,7 +24,7 @@ def main():
     city_cords = get_cords(city)
     weather = get_weather(city_cords[0], city_cords[1], city)
     display_weather(weather)
-    
+    sevenDayForcast(city_cords[0], city_cords[1])
 
 
 
@@ -95,6 +95,7 @@ def display_weather(weather): # Prints the saved weather information
         print(f"Humidity: {humidity} %")
         print(f"Wind speed: {wind_speed} km/h")
 
+
 def ask_exit(): # Asks if user wants to exit
     if input("Do you want to exit (y/n)?") == "y":
         return True
@@ -110,6 +111,31 @@ def codeToComment(weather):
                     return row["Description"]
              
         return "Unknown Condition"
+
+def sevenDayForcast(latitude, longitude): # Prints the minimum and maximum temp for the next 7 days
+    parameters = {
+        "latitude": latitude,
+        "longitude": longitude,
+        "daily": [
+            "weather_code",
+            "temperature_2m_max",
+            "temperature_2m_min",
+            "precipitation_probability_max"
+        ],
+        "timezone": "auto",
+        "forecast_days": 7
+    }
+    weather_url = "https://api.open-meteo.com/v1/forecast"
+    response = requests.get(weather_url, params=parameters)
+    data = response.json()
+
+    dates = data["daily"]["time"]
+    max_temps = data["daily"]["temperature_2m_max"]
+    min_temps = data["daily"]["temperature_2m_min"]
+    print("\n")
+    print("Forecast for the next week: \n")
+    for i in range(len(dates)):
+        print(f"{dates[i]}: From {min_temps[i]} C to {max_temps[i]}")     
 
 
 if __name__ == "__main__": # Only runs main function if the file is the primary code file. 
