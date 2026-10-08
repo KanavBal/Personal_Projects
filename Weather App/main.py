@@ -31,8 +31,8 @@ def main():
 def welcome(): # Startscreen for this program
     print(f"Welcome To This Weather App")
     valid_city = False
-    user_in = input(f"Please enter a city: ").strip()
     while valid_city == False:
+        user_in = input(f"Please enter a city: ").strip()
         if re.fullmatch(r"^[A-Za-zÀ-ÖØ-öø-ÿ.' -]+$",user_in):
             valid_city = True
             return user_in
@@ -55,7 +55,7 @@ def get_cords(city): # Gets koordinates for city using API
         response = requests.get(cords_url, params=parameters)
         response.raise_for_status()
     except requests.RequestException:
-        print("Could not connect to the weather service")
+        raise ConnectionError("Could not connect to the weather service")
 
     data = response.json()
 
@@ -86,8 +86,7 @@ def get_weather(latitude, longitude, city): # Gets weather info from API
         response = requests.get(weather_url, params=parameters)
         response.raise_for_status()
     except requests.RequestException:
-        print("Could not connect to the weather service")
-            
+        raise ConnectionError("Could not connect to the weather service")            
     
     data = response.json()
 
@@ -150,8 +149,7 @@ def sevenDayForcast(latitude, longitude): # Prints the minimum and maximum temp 
         response = requests.get(weather_url, params=parameters)
         response.raise_for_status()
     except requests.RequestException:
-        print("Could not connect to the weather service")
-
+        raise ConnectionError("Could not connect to the weather service")
 
     data = response.json()
 
