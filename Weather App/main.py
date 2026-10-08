@@ -50,8 +50,17 @@ def get_cords(city): # Gets koordinates for city using API
     }
 
     cords_url = "https://geocoding-api.open-meteo.com/v1/search"
-    response = requests.get(cords_url, params=parameters)
+    
+    try:
+        response = requests.get(cords_url, params=parameters)
+        response.raise_for_status()
+    except requests.RequestException:
+        print("Could not connect to the weather service")
+
     data = response.json()
+
+    if "results" not in data:
+        raise ValueError("City could not be found")
 
     latitude = data["results"][0]["latitude"]
     longitude = data["results"][0]["longitude"]
@@ -71,8 +80,19 @@ def get_weather(latitude, longitude, city): # Gets weather info from API
         ]
     }
     weather_url = "https://api.open-meteo.com/v1/forecast"
-    response = requests.get(weather_url, params=parameters)
+    
+    
+    try:
+        response = requests.get(weather_url, params=parameters)
+        response.raise_for_status()
+    except requests.RequestException:
+        print("Could not connect to the weather service")
+            
+    
     data = response.json()
+
+    if "current" not in data:
+        raise ConnectionError("Information about today's forecast could not be recived")
 
     temp = data["current"]["temperature_2m"]
     humidity = data["current"]["relative_humidity_2m"]
@@ -126,8 +146,18 @@ def sevenDayForcast(latitude, longitude): # Prints the minimum and maximum temp 
         "forecast_days": 7
     }
     weather_url = "https://api.open-meteo.com/v1/forecast"
-    response = requests.get(weather_url, params=parameters)
+    try:
+        response = requests.get(weather_url, params=parameters)
+        response.raise_for_status()
+    except requests.RequestException:
+        print("Could not connect to the weather service")
+
+
     data = response.json()
+
+    if "daily" not in data:
+        raise ConnectionError("7-day forecast could not be recived")
+    
 
     dates = data["daily"]["time"]
     max_temps = data["daily"]["temperature_2m_max"]
