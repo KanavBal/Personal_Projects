@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Add a new exerise</title>
+        <script src="{% static 'tracker/exercise.js' %}"></script>
+    </head>
+    <body>
+        <h1>Add A New Exercise!</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="text" placeholder="Exercise Name" name="exercise_name">
+            <input type="number" placeholder="Personal Best" name="exercise_pb" value="0">
+            <button type="submit">Add Exercise!</button>
+
+        </form>
+        <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
+        <button id="view">View Current Exercises</button>
+        <div id="current">
+            <h1>Here are your current exercises:</h1>
+            <ul>
+                {%for exercise in exercises%}
+                    <li>{{exercise}}</li>
+                {%endfor%}
+            </ul>
+        </div>
+        
+
+        
+    </body>
+</html>

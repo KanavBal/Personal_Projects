@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Exersise(models.Model):
+class Exercise(models.Model):
     name = models.CharField()
     pb = models.IntegerField()
 
