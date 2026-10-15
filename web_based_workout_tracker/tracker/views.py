@@ -19,3 +19,5 @@ def add_exercise(request):
         "exercises": Exercise.objects.all()
     })
 
+def add_workout(request):
+    return render(request, "tracker/new_workout.html")

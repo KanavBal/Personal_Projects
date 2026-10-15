@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Log Workout</title>
+        
+    </head>
+    <body>
+        <h1>Log a new workout!</h1>
+        <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
+
+        <form method="post">
+            {% csrf_token %}
+            <h2>Date of workout:</h2>
+            <input type="date">
+            <button type="submit">Start Workout!</button>
+        </form>
+        
+        <div id="current">
+            <ul>
+            </ul>
+        </div>
+    </body>
+</html>
