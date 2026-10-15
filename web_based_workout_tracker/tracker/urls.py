@@ -1,7 +1,9 @@
 from django.urls import path
 from . import views
 
+app_name = "tracker"
+
 urlpatterns = [
     path("", views.index, name="index"),
-    path("new_exersise", views.new_exersise, name="new_exersise")
+    path("new_exersise", views.add_exercise, name="new_exersise")
 ]
