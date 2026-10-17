@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Exercise
+from .models import Exercise, Workout, WorkoutEntry
 
 # Create your views here.
 
@@ -20,4 +20,32 @@ def add_exercise(request):
     })
 
 def add_workout(request):
-    return render(request, "tracker/new_workout.html")
+
+    if request.method == "POST":
+        date = request.POST["date"]
+        workout = Workout.objects.create(date=date)
+
+        exercise_ids = request.POST.getlist("exercise")
+        weights = request.POST.getlist("weight")
+        reps = request.POST.getlist("reps")
+
+        for exercise_id, weight, rep in zip(exercise_ids,weights,reps):
+            exercise = Exercise.objects.get(id=exercise_id)
+
+            WorkoutEntry.objects.create(
+                workout=workout,
+                exercise=exercise,
+                weight=float(weight),
+                reps=int(rep)
+            )
+
+        return redirect("tracker:index")
+
+    return render(request, "tracker/new_workout.html", {
+        "exercises": Exercise.objects.all()
+    })
+
+#def log_workout(request, workout_id):
+#    workout = Workout.objects.get(workout_id)
+
+#    return render(request, "tracker/log_workout.html")

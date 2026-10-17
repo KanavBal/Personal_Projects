@@ -1,0 +1,71 @@
+General structure of the web page:
+(15/10/2026)
+Plans may change in the future, and new features may be added. 
+
+
+Client will land on homepage(Index). Fom there, these options will be avalible:
+    - Add a new exercise
+    - Log a new workout
+    - View Workout history
+
+These subpages will include:
+    Add a new exercise:
+        - Input fields for the neccesary information about the new exercise. 
+        - A button to show exercises that are already in the memory. 
+
+    Log a new workout:
+        - An input field to enter the date of the workout. 
+        - A start button that will start the workout. 
+        - Flow of the page will be:
+            Choose date (Date input)
+            ↓
+            Create Workout object (Submit Button)
+            ↓
+            Start workout
+            ↓
+            Choose exercise (Dropdown menu)
+            ↓
+            Enter weight + reps
+            ↓
+            Create WorkoutEntry
+            ↓
+            Repeat
+            ↓
+            End workout
+        
+
+    View Workout History:
+        - A selector, where a date can be cosen.
+        - When a date is chosen the corresponding workout will appear. 
+
+- All data will be stored using SQL, and the structures of the models will be as follows:
+    - Exercises:
+        - Attributes:
+            - Name
+            - Personal Best
+            - Exercise ID (Assigned Automatically)
+        - Data from the "New exercise" page will be stored here. 
+        - Each exercise will have a personal best atribute to keep track of the best lift. 
+        - ID will be used to refrence an exercise in another table. 
+
+    - Workout:
+        - Attributes:
+            - Workout ID (Created by Django)
+            - Date
+        - Each date represents a compleated workout
+        - Every time a set is compleated, the set is stored in a seperate table, but the workout
+          id and it's date is stored in Workout. 
+        - To get a compleate workout, sets can be sorted by the date that Workout has stored. 
+
+    - WorkoutEntry:
+        - Attributes:
+            - WorkoutEntry ID (Created by Django)
+            - Workout ID (Says wat date the set was compleated on)
+            - Exercise ID (Says what exercise was compleated)
+            - Weight
+            - Reps
+
+
+
+
+    
