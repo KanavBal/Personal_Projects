@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>View Workouts</title>
+    </head>
+    <body>
+        <h1>View Your Workouts</h1>
+        {%for workout in workouts%}
+
+            <h2>Date of workout: {{workout.date}}</h2>
+            <ul>
+                {%for set in workout.sets%}
+                    <li>{{set.exercise.name}} - {{set.weight}} kg - {{set.reps}} reps</li>
+                {%empty%}
+                    <li>No recorded workouts</li>
+                {%endfor%}
+            </ul>
+        {%endfor%}
+        
+        <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
+    </body>
+</html>

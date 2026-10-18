@@ -1,8 +1,16 @@
-General structure of the web page:
+General structure of the web page
+
+Features to add:
+    - Users:
+        - Sign in and out
+        - Save workouts for individuals. 
+    - Social media section:
+        - Way for people to share the workouts, and progress. 
+    - Robotics integration:
+        - Running tracker, with raspberry pi pico and sensors.
+        - Data is saved for the indivdiual user. 
+
 (15/10/2026)
-Plans may change in the future, and new features may be added. 
-
-
 Client will land on homepage(Index). Fom there, these options will be avalible:
     - Add a new exercise
     - Log a new workout
@@ -64,6 +72,7 @@ These subpages will include:
             - Exercise ID (Says what exercise was compleated)
             - Weight
             - Reps
+
 
 
 

@@ -45,7 +45,15 @@ def add_workout(request):
         "exercises": Exercise.objects.all()
     })
 
-#def log_workout(request, workout_id):
-#    workout = Workout.objects.get(workout_id)
+def view_workout(request):
+    workouts = Workout.objects.all()
+    data = []
+    for workout in workouts:
+        sets = WorkoutEntry.objects.filter(workout=workout)
 
-#    return render(request, "tracker/log_workout.html")
+        data.append({"date":workout.date, "sets":sets})
+       
+
+    return render(request,"tracker/view_workout.html", {
+        "workouts": data
+    })
