@@ -50,9 +50,7 @@ def view_workout(request):
     data = []
     for workout in workouts:
         sets = WorkoutEntry.objects.filter(workout=workout)
-
         data.append({"date":workout.date, "sets":sets})
-       
 
     return render(request,"tracker/view_workout.html", {
         "workouts": data

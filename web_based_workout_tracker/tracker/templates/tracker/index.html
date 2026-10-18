@@ -1,17 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Home Menu</title>
-    </head>
+        <link rel="stylesheet" href="{% static 'tracker/index.css' %}">    </head>
     <body>
-        <div id="homeText">
+        <div class="homeText">
             <h1>Hello! Welcome to this workout tracker.</h1>
             <h2>Please choose one of the following options</h2>
         </div>
 
-        <a href="{%url 'tracker:new_exercise'%}"><button>Load new exercise</button></a>
-        <a href="{%url 'tracker:new_workout'%}"><button>Create new workout log</button></a>
-        <a href="{%url 'tracker:view_workout'%}"><button>Se workout history</button></a>
+        <div id="buttons">
+            <a href="{%url 'tracker:new_exercise'%}"><button>Load new exercise</button></a>
+            <a href="{%url 'tracker:new_workout'%}"><button>Create new workout log</button></a>
+            <a href="{%url 'tracker:view_workout'%}"><button>Se workout history</button></a>
+        </div>
+        
         
         <div id="message">
             {{message}}

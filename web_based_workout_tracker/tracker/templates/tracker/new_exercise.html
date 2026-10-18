@@ -4,6 +4,9 @@
     <head>
         <title>Add a new exerise</title>
         <script src="{% static 'tracker/exercise.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'tracker/new_exercise.css' %}">    
+    </head>
+
     </head>
     <body>
         <h1>Add A New Exercise!</h1>
@@ -13,18 +16,38 @@
 
             <input type="text" placeholder="Exercise Name" name="exercise_name">
             <input type="number" placeholder="Personal Best" name="exercise_pb" value="0">
-            <button type="submit">Add Exercise!</button>
+            <button id="addButton" type="submit" >Add Exercise!</button>
 
         </form>
-        <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
-        <button id="view">View Current Exercises</button>
-        <div id="current">
+
+        
+        <div id="otherButtons">
+            <h1>Other Actions</h1>
+            <a href="{%url 'tracker:index'%}"><button class="buttons" id="home">Homepage</button></a>
+            <button class="buttons" id="view">View Current Exercises</button>
+        </div>
+        
+
+        <div id="exercises">
             <h1>Here are your current exercises:</h1>
-            <ul>
-                {%for exercise in exercises%}
-                    <li>{{exercise}}</li>
-                {%endfor%}
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exercise</th>
+                        <th>Personal Best</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for exercise in exercises%}
+                        <tr>
+                            <td>{{exercise.name}}</td>
+                            <td>{{exercise.pb}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+
+            </table>
+
         </div>
         
 

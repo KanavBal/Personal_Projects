@@ -1,0 +1,40 @@
+
+body {
+    background-color:rgb(132, 162, 163);
+}
+
+
+.homeText {
+    color: black;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 100px;
+}
+
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#buttons button {
+    margin-top: 10px;
+    font-weight: bolder;
+    width: 350px;
+    height: 50px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    align-items: center;
+}
+
+#buttons button:hover {
+    background-color:rgb(201, 200, 200);
+}
+
+#buttons button:active {
+    background-color:darkgray;
+    color:whitesmoke;
+}
