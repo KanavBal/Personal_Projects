@@ -1,0 +1,86 @@
+
+body {
+    background-color:rgb(132, 162, 163);
+    color: black;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 100px;
+}
+
+
+input[type="date"] {
+  width: 100%;
+  padding: 12px 24px;
+  background: gainsboro;
+  border: 2px solid #2a2a2d;
+  border-radius: 50px;
+  color:darkgrey;
+  font-family: system-ui, sans-serif;
+  font-size: .95rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .2s;
+  width: 150px;
+  height: 25px;
+  margin-bottom: 50px;
+}
+
+#dateSelect {
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+#dateSelet.date{
+    width: 300px;
+    height: 55px;
+    padding: 12px 24px;
+    gap: 40px;
+}
+
+
+#home {
+    box-sizing: border-box;
+    width: 300px;
+    height: 55px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: bolder;
+}
+
+#home {
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+
+#home:hover {
+    background-color:rgb(201, 200, 200);
+}
+#home:active {
+    background-color:darkgray;
+    color:whitesmoke;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: auto;
+}
+
+th,
+td {
+    padding: 5px 20px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    padding-top: 25px;
+    font-weight: bold;
+    text-align:left;
+}
+

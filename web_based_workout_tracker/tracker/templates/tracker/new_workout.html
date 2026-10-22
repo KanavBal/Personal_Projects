@@ -4,15 +4,20 @@
     <head>
         <title>Log Workout</title>
         <script src="{% static 'tracker/new_workout.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'tracker/new_workout.css' %}">  
     </head>
     <body>
         <h1>Log a new workout!</h1>
-        <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
 
         <form method="post" id="workout_form">
             {% csrf_token %}
-            <h2>Date of workout:</h2>
-            <input type="date" name="date" required>
+            <div class="date_wrap">
+                <div class="date_field">
+                    <h2>Date of workout:</h2>
+                    <input type="date" id="date" required>
+                </div>
+            </div>
+            
             <div id="exercise_container">
 
                 <div class="exercise">
@@ -35,5 +40,6 @@
                     
         </form>
         
+        <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
     </body>
 </html>

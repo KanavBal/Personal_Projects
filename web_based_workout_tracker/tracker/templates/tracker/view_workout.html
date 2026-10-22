@@ -1,20 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>View Workouts</title>
+        <link rel="stylesheet" href="{% static 'tracker/view_workout.css' %}">    
+    </head>
     </head>
     <body>
         <h1>View Your Workouts</h1>
         {%for workout in workouts%}
 
             <h2>Date of workout: {{workout.date}}</h2>
-            <ul>
-                {%for set in workout.sets%}
-                    <li>{{set.exercise.name}} - {{set.weight}} kg - {{set.reps}} reps</li>
-                {%empty%}
-                    <li>No recorded workouts</li>
-                {%endfor%}
-            </ul>
+            <table>
+                <thead>
+                    <th>Exercise</th>
+                    <th>Weight</th>
+                    <th>Reps</th>
+                </thead>
+                <tbody>
+                    {%for set in workout.sets%}
+                        <tr>
+                            <td>{{set.exercise.name}}</td>
+                            <td>{{set.weight}}</td>
+                            <td>{{set.reps}}</td>
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
         {%endfor%}
         
         <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
