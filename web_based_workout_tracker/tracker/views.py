@@ -55,3 +55,6 @@ def view_workout(request):
     return render(request,"tracker/view_workout.html", {
         "workouts": data
     })
+
+def login(request):
+    return render(request, "registration/login.html")
