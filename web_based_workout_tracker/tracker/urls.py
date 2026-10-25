@@ -12,4 +12,5 @@ urlpatterns = [
     path("view_workout", views.view_workout, name="view_workout"),
     path('', include("django.contrib.auth.urls")),
     path("login/", auth_views.LoginView.as_view(template_name="registration/login.html"),name="login"),
+    path("signup", views.signup, name="signup")
 ]

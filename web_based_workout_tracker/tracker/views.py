@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Exercise, Workout, WorkoutEntry
-
+from .forms import RegisterForm
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout, authenticate
 # Create your views here.
 
 def index(request):
@@ -58,3 +60,15 @@ def view_workout(request):
 
 def login(request):
     return render(request, "registration/login.html")
+
+def signup(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('tracker:index')
+    else:
+        form = RegisterForm()
+
+    return render(request, 'registration/signup.html', {'form':form})
