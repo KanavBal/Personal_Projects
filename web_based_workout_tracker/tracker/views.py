@@ -5,6 +5,9 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout, authenticate
 # Create your views here.
 
+def start(request):
+    return render(request, "tracker/start.html")
+
 def index(request):
     return render(request, "tracker/index.html")
 

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Start Page</title>
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'tracker/index.css' %}">    
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'tracker:start'%}">Home</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'tracker:signup'%}">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'tracker:login'%}">Log In</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="homeText">
+            <h1>Hello! Welcome to this workout tracker.</h1>
+            <p>Please log in for acess to the tracker. If you don't have an account, you may sign up</p>
+        </div>
+
+        <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+    </body>
+</html>
