@@ -1,7 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Exercise(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="exercises")
     name = models.CharField()
     pb = models.IntegerField()
 
@@ -9,6 +12,7 @@ class Exercise(models.Model):
         return f"Name:{self.name}, Personal Best: {self.pb}"
 
 class Workout(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="workouts")
     date = models.DateField()
 
     def __str__(self):
