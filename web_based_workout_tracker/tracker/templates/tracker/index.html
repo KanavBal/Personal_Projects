@@ -20,7 +20,7 @@
                 <div>
                     <ul class="navbar-nav">
                         {% if user.is_authenticated%}
-                            <span class="navbar-text">Logged in as {{user.username}} | </span>
+                            <span class="navbar-text">Logged in as {{user.username}} |          </span>
                             <li class="nav-item">
                                 <form method="post" action="{% url 'tracker:logout' %}">
                                     {% csrf_token %}
@@ -44,7 +44,7 @@
 
 
         <div class="homeText">
-            <h1>Hello! Welcome to this workout tracker.</h1>
+            <h1>Hello {{user.username}}! Welcome to this workout tracker.</h1>
             <h2>Please choose one of the following options</h2>
         </div>
 
