@@ -42,6 +42,9 @@ def add_workout(request):
 
         for exercise_id, weight, rep in zip(exercise_ids,weights,reps):
             exercise = get_object_or_404(Exercise,id=exercise_id,user=request.user)
+            if float(weight) > exercise.pb:
+                exercise.pb = float(weight)
+                exercise.save()
 
             WorkoutEntry.objects.create(
                 workout=workout,
@@ -49,6 +52,8 @@ def add_workout(request):
                 weight=float(weight),
                 reps=int(rep)
             )
+
+        
 
         return redirect("tracker:index")
 
@@ -64,8 +69,9 @@ def view_workout(request):
         sets = WorkoutEntry.objects.filter(workout=workout)
         data.append({"date":workout.date, "sets":sets})
 
+    reversed_data = data[::-1]
     return render(request,"tracker/view_workout.html", {
-        "workouts": data
+        "workouts": reversed_data
     })
 
 def login(request):

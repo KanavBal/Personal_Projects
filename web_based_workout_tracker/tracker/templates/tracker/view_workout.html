@@ -47,28 +47,6 @@
         
         <div id="main_content">
             <h1>View Your Workouts</h1>
-            {%for workout in workouts%}
-
-                <h2>Date of workout: {{workout.date}}</h2>
-                <table>
-                    <thead>
-                        <th>Exercise</th>
-                        <th>Weight</th>
-                        <th>Reps</th>
-                    </thead>
-                    <tbody>
-                        {%for set in workout.sets%}
-                            <tr>
-                                <td>{{set.exercise.name}}</td>
-                                <td>{{set.weight}}</td>
-                                <td>{{set.reps}}</td>
-                            </tr>
-                        {%endfor%}
-                    </tbody>
-                </table>
-            {%endfor%}
-            
-            <a href="{%url 'tracker:index'%}"><button id="home">Homepage</button></a>
         </div>
     
         <div class="accordion" id="accordionNested">
@@ -77,10 +55,7 @@
 
                 <div class="accordion-item">
 
-                    <h2
-                        class="accordion-header"
-                        id="heading{{ forloop.counter }}"
-                    >
+                    <h2 class="accordion-header" id="heading{{ forloop.counter }}">
                         <button
                             class="accordion-button collapsed"
                             type="button"
@@ -97,22 +72,15 @@
                         id="collapse{{ forloop.counter }}"
                         class="accordion-collapse collapse"
                         aria-labelledby="heading{{ forloop.counter }}"
-                        data-bs-parent="#accordionNested"
+                       
                         >
 
                         <div class="accordion-body">
 
-                            <strong>
-                                Here are your details for the workout:
-                            </strong>
+                            <strong> Here are your details for the workout:</strong>
 
-                            <div
-                                class="accordion mt-3"
-                                id="innerAccordion{{ forloop.counter }}"
-                                >
-
+                            <div class="accordion mt-3" id="innerAccordion{{ forloop.counter }}">
                                 {% for set in workout.sets %}
-
                                     <div class="accordion-item">
 
                                         <h2
